@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private int _speed;
 
     private bool canMove = true;
-    private PlayerControls _playerControls;
+    private InputSystem_Actions _playerControls;
     private Rigidbody _rb;
     private Vector3 _movement;
 
@@ -16,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake() 
     {
-        _playerControls = new PlayerControls();
+        _playerControls = new InputSystem_Actions();
     }
     
     private void OnEnable()
@@ -58,9 +59,9 @@ public class PlayerController : MonoBehaviour
         _movement = new Vector3(x, 0, z).normalized;
     }
 
-    _anim.SetBool(IS_WALKING_PARAM, _movement != Vector3.zero);
-    _anim.SetBool(IS_BACKWARDS_PARAM, _movement.z > 0);
-
+    // _anim.SetBool(IS_WALKING_PARAM, _movement != Vector3.zero);
+    // _anim.SetBool(IS_BACKWARDS_PARAM, _movement.z > 0);
+    /*
     if (x != 0 && x < 0 && _movement.z <= 0)
     {
         _playerSprite.flipX = true;
@@ -80,9 +81,9 @@ public class PlayerController : MonoBehaviour
     {
         _playerSprite.flipX = true;
     }
-
+    */
     }
-
+    
     private void Sprint()
     {
         _movement = _movement * SPRINT_MULTIPLIER;
