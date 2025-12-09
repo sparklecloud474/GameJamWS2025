@@ -9,7 +9,7 @@ public class OptionsMenu : MonoBehaviour
 
     void Start()
     {
-        
+        BackButton.onClick.AddListener(OnBackClicked);
     }
 
     private void OnBackClicked()

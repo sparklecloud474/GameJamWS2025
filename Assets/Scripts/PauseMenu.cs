@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
     private bool isPaused = false;
 
-    [SerializeField] private GameObject MainMenu;
     [SerializeField] private GameObject OptionsMenu;
     [SerializeField] private GameObject GameUI;
 
@@ -26,10 +26,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.P))
-        //{
-        //    GamePaused();
-        //}
+        
     }
 
     private void OnEnable()
@@ -59,7 +56,8 @@ public class PauseMenu : MonoBehaviour
     }
     private void OnResumeClicked()
     {
-        TogglePause(true);
+        TogglePause(false);
+        GameUI.SetActive(true);
     }
 
     private void OnOptionsClicked()
@@ -70,7 +68,7 @@ public class PauseMenu : MonoBehaviour
 
     private void OnBackToMainClicked()
     {
-
+        SceneManager.LoadScene("MainMenu");
     }
 
 }
