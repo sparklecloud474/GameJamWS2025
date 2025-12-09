@@ -27,7 +27,7 @@ public class ProgressHitMiniGame : MonoBehaviour
     {
         MoveMarker();
 
-        if (Input.GetKeyDown(hitKey))
+        if (InputSystem_Actions.PlayerActions.ReferenceEquals(hitKey, KeyCode.Space) )
         {
             CheckHit();
         }

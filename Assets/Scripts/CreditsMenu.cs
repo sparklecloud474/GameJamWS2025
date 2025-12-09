@@ -48,16 +48,16 @@ public class CreditsMenu : MonoBehaviour
 
     private void OnDorinClicked()
     {
-
+        Application.OpenURL("https://2feldeeds.itch.io");
     }
 
     private void OnErikClicked()
     {
-
+        Application.OpenURL("https://certainlyoverdone.itch.io");
     }
     private void OnSherryClicked()
     {
-
+        Application.OpenURL("https://whoknowssql.itch.io");
     }
     private void OnLeaClicked()
     {
