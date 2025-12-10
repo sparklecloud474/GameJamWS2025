@@ -61,14 +61,15 @@ public class CreditsMenu : MonoBehaviour
     }
     private void OnLeaClicked()
     {
-
+        Application.OpenURL("https://itch.io/profile/lea-nova");
     }
     private void OnLeniClicked()
     {
+        Application.OpenURL("https://mimiththemyth.itch.io/");
 
     }
     private void OnMiaClicked()
     {
-
+        Application.OpenURL("https://mia-mika.itch.io/");
     }
 }
