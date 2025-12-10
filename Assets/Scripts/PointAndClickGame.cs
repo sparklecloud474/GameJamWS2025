@@ -14,6 +14,9 @@ public class PointAndClickGame : MonoBehaviour
     private float timer;
     private int score = 0;
 
+    // shit um Event invoke in main zu testen
+    private bool bActivateGame;
+
     void Start()
     {
         timer = timeToClick;
@@ -25,12 +28,15 @@ public class PointAndClickGame : MonoBehaviour
 
     void Update()
     {
-        timer -= Time.deltaTime;
-        timerText.text = timer.ToString("F2");
-
-        if(timer <= 0)
+        if (bActivateGame == true )
         {
-            MissedButton();
+            timer -= Time.deltaTime;
+            timerText.text = timer.ToString("F2");
+
+            if(timer <= 0)
+            {
+                MissedButton();
+            }
         }
     }
 
@@ -40,6 +46,12 @@ public class PointAndClickGame : MonoBehaviour
         UpdateUI();
         MoveButton();
         ResetTimer();
+        
+        // Stuff zum Interactable testen
+        if(score == 10)
+        {
+            DeactivateGame();
+        }
     }
 
     private void MissedButton()
@@ -64,5 +76,24 @@ public class PointAndClickGame : MonoBehaviour
     private void UpdateUI()
     {
         scoreText.text = "Score: " + score;
+    }
+
+
+    // shit um Event invoke in main zu testen
+    public void ActivateGame()
+    {
+        print("PUZZLE ACTIVATED");
+        bActivateGame = true;
+        gameObject.SetActive(true);
+        GameObject.FindWithTag("Player").GetComponent<PlayerController>().canMove = false;
+    }
+
+    private void DeactivateGame()
+    {
+        print("PUZZLE DECTIVATED");
+        bActivateGame = false;
+        gameObject.SetActive(false);
+        score = 0;
+        GameObject.FindWithTag("Player").GetComponent<PlayerController>().canMove = true;
     }
 }

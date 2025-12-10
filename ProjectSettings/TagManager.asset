@@ -7,6 +7,7 @@ TagManager:
   - Path
   - Start
   - Goal
+  - Interactable
   layers:
   - Default
   - TransparentFX

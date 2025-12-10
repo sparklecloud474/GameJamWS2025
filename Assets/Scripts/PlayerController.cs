@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -6,10 +7,12 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private int _speed;
 
-    private bool canMove = true;
+    public bool canMove = true;
     private InputSystem_Actions _playerControls;
     private Rigidbody _rb;
     private Vector3 _movement;
+    private GameObject interactable;
+    private bool infrontOfInteractable;
 
     // Inputs
     InputAction interactAction;
@@ -17,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private const string IS_WALKING_PARAM = "IsWalking";
     private const string IS_BACKWARDS_PARAM = "IsBackwards";
     private const int SPRINT_MULTIPLIER = 3;
+    private const string INTERACTABLE = "Interactable";
 
 
     private void Awake() 
@@ -43,7 +47,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _rb = gameObject.GetComponent<Rigidbody>();
-
     }
 
     // Update is called once per frame
@@ -92,18 +95,31 @@ public class PlayerController : MonoBehaviour
             _playerSprite.flipX = true;
         }
         */
-
-        if(interactAction.IsPressed() == true)
-        {
-            print("Interacted");
-        }
-
-        
     }
     
     private void FixedUpdate() 
     {
         _rb.MovePosition(transform.position + _movement * _speed * Time.fixedDeltaTime);    
+    }
+
+    private void OnTriggerEnter(Collider other) 
+    {
+        if (other.gameObject.tag == INTERACTABLE)
+        {
+            infrontOfInteractable = true;
+            interactable = other.gameObject;
+            interactable.GetComponent<Interactable>().ShowInteractPrompt(true);
+        }    
+    }
+
+    private void OnTriggerExit(Collider other) 
+    {
+        if (other.gameObject.tag == INTERACTABLE)
+        {
+            infrontOfInteractable = false;
+            interactable.GetComponent<Interactable>().ShowInteractPrompt(false);
+            interactable = null;
+        }
     }
 
     private void Sprint()
@@ -126,5 +142,9 @@ public class PlayerController : MonoBehaviour
     private void Interact()
     {
         print("Interact triggered");
+        if(infrontOfInteractable == true && interactable != null)
+        {
+            interactable.GetComponent<Interactable>().Interact();
+        }
     }
 }
