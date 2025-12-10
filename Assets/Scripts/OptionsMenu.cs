@@ -10,9 +10,9 @@ public class OptionsMenu : MonoBehaviour
     public Slider sfxSlider;
     public Slider musicSlider;
 
-    const string MASTER_KEY = "masterVolume";
-    const string SFX_KEY = "sfxVolume";
-    const string MUSIC_KEY = "musicVolume";
+    const string MASTER_KEY = "Master";
+    const string SFX_KEY = "SFX";
+    const string MUSIC_KEY = "Music";
 
     [SerializeField] private GameObject PauseMenu;
 
@@ -22,17 +22,24 @@ public class OptionsMenu : MonoBehaviour
     {
         BackButton.onClick.AddListener(OnBackClicked);
 
+        // load saved slider values
         masterSlider.value = PlayerPrefs.GetFloat(MASTER_KEY, 1f);
         sfxSlider.value = PlayerPrefs.GetFloat (SFX_KEY, 1f);
         musicSlider.value = PlayerPrefs.GetFloat (MUSIC_KEY, 1f);
 
-        SetMasterVolume(masterSlider.value);
-        SetSfxVolume(sfxSlider.value);
-        SetMusicVolume(musicSlider.value);
+        // apply audio levels based on saved values
+       ApplyVolume(masterSlider.value, sfxSlider.value, musicSlider.value);
 
         masterSlider.onValueChanged.AddListener(SetMasterVolume);
         sfxSlider.onValueChanged.AddListener(SetSfxVolume);
         musicSlider.onValueChanged.AddListener(SetMusicVolume);
+    }
+
+    void ApplyVolume(float master, float sfx, float music)
+    {
+        mixer.SetFloat("MasterVolume", LinearToDb(master));
+        mixer.SetFloat("SFXVolume", LinearToDb(-master));
+        mixer.SetFloat("MusicVolume", LinearToDb(-master));
     }
 
     float LinearToDb(float linear)
@@ -43,20 +50,17 @@ public class OptionsMenu : MonoBehaviour
 
     public void SetMasterVolume(float value)
     {
-        float db = LinearToDb(value);
-        mixer.SetFloat("MasterVolume", db);
+        mixer.SetFloat("MasterVolume", LinearToDb(value));
         PlayerPrefs.SetFloat(MASTER_KEY, value);
     }
     public void SetSfxVolume(float value)
     {
-        float db = LinearToDb(value);
-        mixer.SetFloat("SFXVolume", db);
+        mixer.SetFloat("SFXVolume", LinearToDb(value));
         PlayerPrefs.SetFloat(SFX_KEY, value);
     }
     public void SetMusicVolume(float value)
     {
-        float db = LinearToDb(value);
-        mixer.SetFloat("MusicVolume", db);
+        mixer.SetFloat("MusicVolume", LinearToDb(value));
         PlayerPrefs.SetFloat(MUSIC_KEY, value);
     }
 

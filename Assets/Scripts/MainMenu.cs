@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,6 +11,7 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField] private GameObject CreditsMenu;
     [SerializeField] private GameObject GameUI;
+    [SerializeField] private GameObject AudioManager;
 
     void Start()
     {
@@ -22,10 +24,9 @@ public class MainMenu : MonoBehaviour
     }
 
     private void OnStartClicked()
-    { 
-        gameObject.SetActive(false);
+    {
+        //await Task.Delay(1000);
         SceneManager.LoadScene("Game");
-        //GameUI.SetActive(true);
         Time.timeScale = 1f;
     }
 
