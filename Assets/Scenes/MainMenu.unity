@@ -3880,7 +3880,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2267690556148838681, guid: 612ab60fd5f71c54b9af5ee8fd7b325f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2512666611180689593, guid: 612ab60fd5f71c54b9af5ee8fd7b325f, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -4378,7 +4378,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4401843844599006759, guid: 10a5d7810b40ec14ebfd60a3d911e924, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4661815574669254623, guid: 10a5d7810b40ec14ebfd60a3d911e924, type: 3}
       propertyPath: GameUI
