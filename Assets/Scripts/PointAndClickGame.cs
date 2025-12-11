@@ -28,7 +28,7 @@ public class PointAndClickGame : MonoBehaviour
 
     void Update()
     {
-        if (bActivateGame == true )
+        if (bActivateGame == true)
         {
             timer -= Time.deltaTime;
             timerText.text = timer.ToString("F2");
@@ -95,5 +95,6 @@ public class PointAndClickGame : MonoBehaviour
         gameObject.SetActive(false);
         score = 0;
         GameObject.FindWithTag("Player").GetComponent<PlayerController>().canMove = true;
+        GameObject.FindWithTag("GameController").GetComponent<GameController>().Reroll();
     }
 }

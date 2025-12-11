@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     // Inputs
     InputAction interactAction;
+    InputAction skillCheckAction;
 
     private const string IS_WALKING_PARAM = "IsWalking";
     private const string IS_BACKWARDS_PARAM = "IsBackwards";
@@ -34,13 +35,16 @@ public class PlayerController : MonoBehaviour
 
         // get input actions
         interactAction = _playerControls.Player.Interact;
+        skillCheckAction = _playerControls.Player.SpaceAction;
         interactAction.performed += OnInteractPressed;
+        skillCheckAction.performed += OnSpaceActionPressed;
     }
 
     private void OnDisable()
     {
         _playerControls.Disable();
         interactAction.performed -= OnInteractPressed;
+        skillCheckAction.performed -= OnSpaceActionPressed;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -134,6 +138,7 @@ public class PlayerController : MonoBehaviour
 
     // Input Functions
 
+    // interact
     private void OnInteractPressed(InputAction.CallbackContext ctx)
     {
         Interact();
@@ -141,10 +146,23 @@ public class PlayerController : MonoBehaviour
 
     private void Interact()
     {
-        print("Interact triggered");
-        if(infrontOfInteractable == true && interactable != null)
+        if (canMove == true)
         {
-            interactable.GetComponent<Interactable>().Interact();
+            print("Interact triggered");
+            if(infrontOfInteractable == true && interactable != null)
+            {
+                interactable.GetComponent<Interactable>().Interact();
+            }
+        }
+    }
+
+    // skill check
+    private void OnSpaceActionPressed(InputAction.CallbackContext ctx)
+    {
+        GameObject skillCheckPuzzle = GameObject.FindWithTag("SkillCheckGame");
+        if (skillCheckPuzzle.GetComponent<SkillCheckPuzzle>().bActivateGame == true)
+        {
+            skillCheckPuzzle.GetComponent<SkillCheckPuzzle>().CheckValue();
         }
     }
 }

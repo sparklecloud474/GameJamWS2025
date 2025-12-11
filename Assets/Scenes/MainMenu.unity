@@ -1679,9 +1679,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 68
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2361,7 +2361,7 @@ RectTransform:
   m_Father: {fileID: 527280537}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2413,13 +2413,14 @@ GameObject:
   m_Component:
   - component: {fileID: 923524350}
   - component: {fileID: 923524351}
+  - component: {fileID: 923524352}
   m_Layer: 0
   m_Name: ProgressbarHitMiniGame
-  m_TagString: Untagged
+  m_TagString: SkillCheckGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &923524350
 Transform:
   m_ObjectHideFlags: 0
@@ -2446,7 +2447,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 923524349}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 145ebb8e37e710d4ba5de638ea8f278b, type: 3}
   m_Name: 
@@ -2456,6 +2457,23 @@ MonoBehaviour:
   marker: {fileID: 277821639}
   speed: 1
   hitKey: 32
+--- !u!114 &923524352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 923524349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5500d5da794b5640988323b6f2260c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillCheckPuzzle
+  slider: {fileID: 468145853}
+  resultText: {fileID: 1815540302}
+  marker: {fileID: 277821639}
+  speed: 1
+  bActivateGame: 1
 --- !u!1 &961067849
 GameObject:
   m_ObjectHideFlags: 0
