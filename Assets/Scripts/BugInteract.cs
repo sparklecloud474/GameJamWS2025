@@ -2,15 +2,13 @@ using UnityEngine;
 
 public class BugInteract : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public string bugTag;
+    public BugSpriteSelector bugSpriteSelector;
+    public PointAndClickGame pointAndClickGame;
 
-    // Update is called once per frame
-    void Update()
+    public void PrepareBugMiniGame()
     {
-        
+        bugSpriteSelector.SetBug(bugTag);
+        //pointAndClickGame.SetBugTag(bugTag);
     }
 }
