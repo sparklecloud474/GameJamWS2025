@@ -82,27 +82,37 @@ public class PlayerController : MonoBehaviour
             _movement = new Vector3(x, 0, z).normalized;
         }
 
-        // _anim.SetBool(IS_WALKING_PARAM, _movement != Vector3.zero);
-        // _anim.SetBool(IS_BACKWARDS_PARAM, _movement.z > 0);
+        _anim.SetBool(IS_WALKING_PARAM, _movement != Vector3.zero);
+        _anim.SetBool(IS_BACKWARDS_PARAM, _movement.z > 0);
+        _anim.SetBool(IS_SIDEWAYS_PARAM, _movement.x > 0 || _movement.x < 0);
+
+        if (x < 0)
+        {
+            _playerSprite.flipX = false;
+        }
+        else if (x > 0)
+        {
+            _playerSprite.flipX = true;
+        }
         /*
         if (x != 0 && x < 0 && _movement.z <= 0)
         {
-            _playerSprite.flipX = true;
+            _playerSprite.flipX = false;
         }
 
         else if (x != 0 && x > 0 && _movement.z <= 0)
         {
-            _playerSprite.flipX = false;
+            _playerSprite.flipX = true;
         }
 
         else if (x != 0 && x < 0 && _movement.z > 0)
         {
-            _playerSprite.flipX = false;
+            _playerSprite.flipX = true;
         }
 
         else if (x != 0 && x > 0 && _movement.z > 0)
         {
-            _playerSprite.flipX = true;
+            _playerSprite.flipX = false;
         }
         */
     }
@@ -122,6 +132,7 @@ public class PlayerController : MonoBehaviour
             infrontOfInteractable = true;
             interactable = other.gameObject;
             interactable.GetComponent<Interactable>().ShowInteractPrompt(true);
+            _anim.SetBool(IS_INFRONTOFINTERACTABLE_PARAM, true);
         }    
     }
 
@@ -132,6 +143,7 @@ public class PlayerController : MonoBehaviour
             infrontOfInteractable = false;
             interactable.GetComponent<Interactable>().ShowInteractPrompt(false);
             interactable = null;
+            _anim.SetBool(IS_INFRONTOFINTERACTABLE_PARAM, false);
         }
     }
 
