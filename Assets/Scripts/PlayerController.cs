@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 _movement;
     private GameObject interactable;
     private bool infrontOfInteractable;
+    private Animator _anim;
+    private SpriteRenderer _playerSprite;
 
     // Inputs
     InputAction interactAction;
@@ -23,11 +25,14 @@ public class PlayerController : MonoBehaviour
     private const string IS_SIDEWAYS_PARAM = "IsSideways";
     private const int SPRINT_MULTIPLIER = 3;
     private const string INTERACTABLE = "Interactable";
+    private const string IS_INFRONTOFINTERACTABLE_PARAM = "InfrontOfInteractable";
 
 
     private void Awake() 
     {
         _playerControls = new InputSystem_Actions();
+        _anim = gameObject.GetComponent<Animator>();
+        _playerSprite = gameObject.GetComponent<SpriteRenderer>();
     }
     
     private void OnEnable()
