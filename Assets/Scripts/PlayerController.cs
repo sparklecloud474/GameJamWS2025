@@ -109,8 +109,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
+        print("Collider entered");
+
         if (other.gameObject.tag == INTERACTABLE)
         {
+            print("Interactable found");
             infrontOfInteractable = true;
             interactable = other.gameObject;
             interactable.GetComponent<Interactable>().ShowInteractPrompt(true);
