@@ -27,9 +27,16 @@ public class GachaMiniGame : MonoBehaviour
         
     }
 
-    public void ButtonClicked()
+    public void ButtonClicked(Button button)
     {
-        
+        if (System.Array.IndexOf(buttons, button) == correctButtonIndex)
+        {
+            print("CORRECT BUTTON");
+        }
+        else if (System.Array.IndexOf(buttons, button) != correctButtonIndex)
+        {
+            print("WRONG BUTTON");
+        }
     }
 
     private void MoveBug()
