@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     private const string IS_WALKING_PARAM = "IsWalking";
     private const string IS_BACKWARDS_PARAM = "IsBackwards";
+    private const string IS_SIDEWAYS_PARAM = "IsSideways";
     private const int SPRINT_MULTIPLIER = 3;
     private const string INTERACTABLE = "Interactable";
 
