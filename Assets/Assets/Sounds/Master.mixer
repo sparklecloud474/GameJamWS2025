@@ -33,6 +33,54 @@ AudioMixerGroupController:
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &-6169682110416824499
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 03a2620fe948ac54582a786bc88a79ea
+  m_EffectName: Duck Volume
+  m_MixLevel: ee3c4b203ea9c13478c12864ac14a299
+  m_Parameters:
+  - m_ParameterName: Threshold
+    m_GUID: 0eee7ce3f43a8c141b828c7ab7e963c0
+  - m_ParameterName: Ratio
+    m_GUID: 755afb163d5b580489c9a68bb3365e75
+  - m_ParameterName: Attack Time
+    m_GUID: a42b35164c0cae54eb140e290d10a3fe
+  - m_ParameterName: Release Time
+    m_GUID: bceaa2329c743fd4d8d19c2352f15031
+  - m_ParameterName: Make-up Gain
+    m_GUID: 928ab547e4a5c9945b08fcf100079f56
+  - m_ParameterName: Knee
+    m_GUID: ceeb6a702972c9e42a7e59de398af4e7
+  - m_ParameterName: Sidechain Mix
+    m_GUID: 865153389945fa44e9fb0ec3a3bf5de3
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!244 &-5803620293314456333
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 4ab5298b9a0c6594eb9694263df20d98
+  m_EffectName: Normalize
+  m_MixLevel: fe3ad75883d131b49981bfe5bf69cf3a
+  m_Parameters:
+  - m_ParameterName: Fade in time
+    m_GUID: 2a03386ade76e134899a16b2d3424811
+  - m_ParameterName: Lowest volume
+    m_GUID: 22eaa9a7b9be0dd4eb12e29d9bfa5690
+  - m_ParameterName: Maximum amp
+    m_GUID: ba83cf474024d80488cd27e2b77b2cb7
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
@@ -107,7 +155,8 @@ AudioMixerSnapshotController:
   m_Name: Snapshot
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: a56239f1118b35c4ba14e19a0ba341cd
-  m_FloatValues: {}
+  m_FloatValues:
+    3824788ac2a1a2f4f9a268126b09e721: 0.22101378
   m_TransitionOverrides: {}
 --- !u!244 &7249121592995765172
 AudioMixerEffectController:
