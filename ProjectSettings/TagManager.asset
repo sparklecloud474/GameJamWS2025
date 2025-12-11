@@ -9,6 +9,15 @@ TagManager:
   - Goal
   - Interactable
   - SkillCheckGame
+  - YellowBug
+  - GreenBug
+  - BrownMoth
+  - BlueButterfly
+  - StickBug
+  - OrangeButterfly
+  - BlueDragonfly
+  - RedDragonfly
+  - Roach
   layers:
   - Default
   - TransparentFX

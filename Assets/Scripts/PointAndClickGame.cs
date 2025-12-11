@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class PointAndClickGame : MonoBehaviour
 {
     public RectTransform gameArea;
     public Button targetButton;
     public float timeToClick = 1.5f;
+    public BugSpriteSelector bugSpriteSelector;
 
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text timerText;
@@ -16,6 +18,7 @@ public class PointAndClickGame : MonoBehaviour
 
     // shit um Event invoke in main zu testen
     private bool bActivateGame;
+
 
     void Start()
     {
@@ -35,10 +38,16 @@ public class PointAndClickGame : MonoBehaviour
 
             if(timer <= 0)
             {
+                Debug.Log("timer end");
                 MissedButton();
             }
         }
     }
+
+    //public void StartMinigame(string bugTag)
+    //{
+    //    BugSpriteSelector.SetBug(bugTag);
+    //}
 
     private void OnButtonClicked()
     {
@@ -82,9 +91,11 @@ public class PointAndClickGame : MonoBehaviour
     // shit um Event invoke in main zu testen
     public void ActivateGame()
     {
-        print("PUZZLE ACTIVATED");
         bActivateGame = true;
+        print("PUZZLE ACTIVATED");
+
         gameObject.SetActive(true);
+
         GameObject.FindWithTag("Player").GetComponent<PlayerController>().canMove = false;
     }
 
