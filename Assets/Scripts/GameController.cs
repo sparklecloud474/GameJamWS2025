@@ -34,17 +34,20 @@ public class GameController : MonoBehaviour
 
     public void StartRandomGame()
     {
-        if (gameIndex == 0)
+        if (nextBug)
         {
-            SkillCheckPuzzle.GetComponent<SkillCheckPuzzle>().ActivateGame(); // nextBug
-        }
-        else if (gameIndex == 1)
-        {
-            PointAndClick.GetComponent<PointAndClickGame>().ActivateGame(nextBug);
-        }
-        else if (gameIndex == 2)
-        {
-            GachaGame.GetComponent<GachaMiniGame>().ActivateGame(nextBug);
+            if (gameIndex == 0)
+            {
+                SkillCheckPuzzle.GetComponent<SkillCheckPuzzle>().ActivateGame(nextBug); // nextBug
+            }
+            else if (gameIndex == 1)
+            {
+                PointAndClick.GetComponent<PointAndClickGame>().ActivateGame(nextBug);
+            }
+            else if (gameIndex == 2)
+            {
+                GachaGame.GetComponent<GachaMiniGame>().ActivateGame(nextBug);
+            }
         }
     }
 
@@ -53,11 +56,18 @@ public class GameController : MonoBehaviour
         gameIndex = Random.Range(0, 3);
     }
 
-    public void BugCaught( Image bug)
+    public void BugCaught(Image bug)
     {
         print(bug.name);
         collectedBugs.Add(Bugs.IndexOf(bug));
         Bugs.Remove(bug);
-        nextBug = Bugs[Random.Range(0, Bugs.Count + 1)];
+        if (Bugs.Count >= 1)
+        {
+            nextBug = Bugs[Random.Range(0, Bugs.Count)];
+        }
+        else if(Bugs.Count == 0)
+        {
+            nextBug = null;
+        }
     }
 }

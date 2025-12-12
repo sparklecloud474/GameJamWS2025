@@ -9,6 +9,7 @@ public class SkillCheckPuzzle : MonoBehaviour
     [SerializeField] private TMP_Text resultText;
     [SerializeField] private RectTransform marker;
     [SerializeField] private float speed;
+    [SerializeField] private Image bugImage;
 
     private int areaMin = 30;
     private int areaMax = 68;
@@ -16,6 +17,7 @@ public class SkillCheckPuzzle : MonoBehaviour
     private float timer;
     private bool bLeftToRight;
     private GameObject playerRef;
+    private Image currentBug;
 
 
     public bool bActivateGame = true;
@@ -62,6 +64,7 @@ public class SkillCheckPuzzle : MonoBehaviour
         {
             resultText.text = "Good Job!";
             resultText.color = Color.green;
+            GameObject.FindWithTag("GameController").GetComponent<GameController>().BugCaught(currentBug);
             DeactivateGame();
         }
         else if (slider.value < areaMin)
@@ -79,14 +82,16 @@ public class SkillCheckPuzzle : MonoBehaviour
         }
     }
 
-    public void ActivateGame()
+    public void ActivateGame(Image bug)
     {
+        bugImage.sprite = bug.sprite;
         slider.value = 0;
         resultText.text = "";
         bActivateGame = true;
         gameObject.SetActive(true);
         playerRef = GameObject.FindWithTag("Player");
         playerRef.GetComponent<PlayerController>().canMove = false;
+        currentBug = bug;
     }
 
     private void DeactivateGame()
@@ -95,10 +100,5 @@ public class SkillCheckPuzzle : MonoBehaviour
         gameObject.SetActive(false);
         playerRef.GetComponent<PlayerController>().canMove = true;
         GameObject.FindWithTag("GameController").GetComponent<GameController>().Reroll();
-    }
-
-    private void Timer()
-    {
-
     }
 }
