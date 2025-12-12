@@ -12,14 +12,18 @@ public class SkillCheckPuzzle : MonoBehaviour
 
     private int areaMin = 30;
     private int areaMax = 68;
+    private float timerUntilDisable = 2f;
+    private float timer;
     private bool bLeftToRight;
     private GameObject playerRef;
+
 
     public bool bActivateGame = true;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        timer = timerUntilDisable;
         slider.value = 0;
         resultText.text = "";
     }
@@ -46,6 +50,8 @@ public class SkillCheckPuzzle : MonoBehaviour
                 bLeftToRight = false;
             }
         }
+
+        
     }
 
     public void CheckValue()
@@ -54,17 +60,21 @@ public class SkillCheckPuzzle : MonoBehaviour
 
         if (slider.value >= areaMin && slider.value <= areaMax)
         {
-            print("YOU WON");
+            resultText.text = "Good Job!";
+            resultText.color = Color.green;
             DeactivateGame();
         }
         else if (slider.value < areaMin)
         {
-            print("YOU LOST");
+            resultText.text = "What a pity!";
+            resultText.color = Color.red;
             DeactivateGame();
         }
         else if (slider.value > areaMax)
         {
-            print("YOU LOST");
+            resultText.text = "What a pity!";
+            resultText.color = Color.red;
+            
             DeactivateGame();
         }
     }
@@ -85,5 +95,10 @@ public class SkillCheckPuzzle : MonoBehaviour
         gameObject.SetActive(false);
         playerRef.GetComponent<PlayerController>().canMove = true;
         GameObject.FindWithTag("GameController").GetComponent<GameController>().Reroll();
+    }
+
+    private void Timer()
+    {
+
     }
 }

@@ -8,7 +8,6 @@ public class PauseMenu : MonoBehaviour
     private bool isPaused = false;
 
     [SerializeField] private GameObject OptionsMenu;
-    [SerializeField] private GameObject GameUI;
 
     [SerializeField] private Button ResumeButton;
     [SerializeField] private Button OptionsButton;
@@ -19,6 +18,7 @@ public class PauseMenu : MonoBehaviour
 
     void Start()
     {
+
         ResumeButton.onClick.AddListener(OnResumeClicked);
         OptionsButton.onClick.AddListener(OnOptionsClicked);
         BackToMainButton.onClick.AddListener(OnBackToMainClicked);
@@ -50,14 +50,12 @@ public class PauseMenu : MonoBehaviour
         isPaused = paused;
 
         gameObject.SetActive(isPaused);
-        GameUI.SetActive(!isPaused);
 
         Time.timeScale = isPaused ? 0f : 1f;
     }
     private void OnResumeClicked()
     {
         TogglePause(false);
-        GameUI.SetActive(true);
     }
 
     private void OnOptionsClicked()

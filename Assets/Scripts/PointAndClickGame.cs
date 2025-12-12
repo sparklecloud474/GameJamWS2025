@@ -34,7 +34,7 @@ public class PointAndClickGame : MonoBehaviour
         if (bActivateGame == true)
         {
             timer -= Time.deltaTime;
-            timerText.text = timer.ToString("F2");
+            timerText.text = "Timer: " + timer.ToString("F2");
 
             if(timer <= 0)
             {

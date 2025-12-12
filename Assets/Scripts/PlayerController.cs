@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private int _speed;
+    [SerializeField] private GameObject pauseMenu;
 
     public bool canMove = true;
+
     private InputSystem_Actions _playerControls;
     private Rigidbody _rb;
     private Vector3 _movement;
@@ -27,12 +29,21 @@ public class PlayerController : MonoBehaviour
     private const string INTERACTABLE = "Interactable";
     private const string IS_INFRONTOFINTERACTABLE_PARAM = "InfrontOfInteractable";
 
+    //footstepsound
+    public AudioClip[] footstepClip;
+    public float stepInterval = 0.45f;
+
+    private AudioSource audioSource;
+    private float stepTimer = 0.0f;
+
 
     private void Awake() 
     {
         _playerControls = new InputSystem_Actions();
         _anim = gameObject.GetComponent<Animator>();
         _playerSprite = gameObject.GetComponent<SpriteRenderer>();
+
+        audioSource = GetComponent<AudioSource>();
     }
     
     private void OnEnable()
@@ -69,6 +80,11 @@ public class PlayerController : MonoBehaviour
         {
             x = _playerControls.Player.Move.ReadValue<Vector2>().x;
             z = _playerControls.Player.Move.ReadValue<Vector2>().y;
+        }
+
+        if(Keyboard.current.escapeKey.wasPressedThisFrame)
+        {
+            TogglePauseMenu();
         }
 
         _movement = new Vector3(x, 0, z).normalized;
@@ -115,6 +131,9 @@ public class PlayerController : MonoBehaviour
             _playerSprite.flipX = false;
         }
         */
+
+        HandleFootsteps();
+
     }
     
     private void FixedUpdate() 
@@ -186,4 +205,47 @@ public class PlayerController : MonoBehaviour
             skillCheckPuzzle.GetComponent<SkillCheckPuzzle>().CheckValue();
         }
     }
+
+    private void TogglePauseMenu()
+    {
+        bool isActive = pauseMenu.activeSelf;
+        pauseMenu.SetActive(!isActive);
+
+        if(isActive)
+        {
+            canMove = false;
+        }
+        else
+        {
+            canMove = true;
+        }
+    }
+
+    private void HandleFootsteps()
+    {
+        bool isWalking = _movement.magnitude > 0.1f && canMove == true;
+
+        if(!isWalking)
+        {
+            stepTimer = 0;
+            return;
+        }
+
+        stepTimer -= Time.deltaTime;
+
+        if(stepTimer <= 0f)
+        {
+            PlayFootsteps();
+            stepTimer = stepInterval;
+        }
+    }
+
+    private void PlayFootsteps()
+    {
+        if (footstepClip.Length == 0 || audioSource == null) return;
+
+        AudioClip clip = footstepClip[Random.Range(0, footstepClip.Length)];
+        audioSource.PlayOneShot(clip);
+    }
+
 }

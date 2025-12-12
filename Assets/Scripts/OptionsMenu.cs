@@ -23,9 +23,9 @@ public class OptionsMenu : MonoBehaviour
         BackButton.onClick.AddListener(OnBackClicked);
 
         // load saved slider values
-        masterSlider.value = PlayerPrefs.GetFloat(MASTER_KEY, 1f);
-        sfxSlider.value = PlayerPrefs.GetFloat (SFX_KEY, 1f);
-        musicSlider.value = PlayerPrefs.GetFloat (MUSIC_KEY, 1f);
+        masterSlider.value = PlayerPrefs.GetFloat(MASTER_KEY, 0f);
+        sfxSlider.value = PlayerPrefs.GetFloat (SFX_KEY, 0f);
+        musicSlider.value = PlayerPrefs.GetFloat (MUSIC_KEY, 0f);
 
         // apply audio levels based on saved values
        ApplyVolume(masterSlider.value, sfxSlider.value, musicSlider.value);
