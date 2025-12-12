@@ -13,6 +13,7 @@ public class GachaMiniGame : MonoBehaviour
     private bool bActivateGame;
     private int correctButtonIndex;
     private int AttemptsLeft;
+    private Image currentBug;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,7 +33,7 @@ public class GachaMiniGame : MonoBehaviour
         if (System.Array.IndexOf(buttons, button) == correctButtonIndex)
         {
             print("CORRECT BUTTON");
-            // Function das der gefangene Käfer im Terrarium angezeigt wird
+            GameObject.FindWithTag("GameController").GetComponent<GameController>().BugCaught(currentBug);
             DeactivateGame();
         }
         else if (System.Array.IndexOf(buttons, button) != correctButtonIndex)
@@ -61,6 +62,7 @@ public class GachaMiniGame : MonoBehaviour
         print("GAME ACTIVATED");
         gameObject.SetActive(true);
         GameObject.FindWithTag("Player").GetComponent<PlayerController>().canMove = false;
+        currentBug = bug;
     }
 
     private void DeactivateGame()
@@ -68,8 +70,9 @@ public class GachaMiniGame : MonoBehaviour
         bActivateGame = false;
         print("GAME DEACTIVATED");
         gameObject.SetActive(false);
-        //GameObject.FindWithTag("Player").GetComponent<PlayerController>().canMove = true;
+        GameObject.FindWithTag("Player").GetComponent<PlayerController>().canMove = true;
         Reroll();
+        GameObject.FindWithTag("GameController").GetComponent<GameController>().Reroll();
     }
 
     private void Reroll()

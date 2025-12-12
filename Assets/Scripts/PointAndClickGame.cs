@@ -61,6 +61,7 @@ public class PointAndClickGame : MonoBehaviour
         if(score == 10)
         {
             DeactivateGame();
+            GameObject.FindWithTag("GameController").GetComponent<GameController>().BugCaught(currentBug);
         }
     }
 
@@ -99,6 +100,9 @@ public class PointAndClickGame : MonoBehaviour
         gameObject.SetActive(true);
 
         GameObject.FindWithTag("Player").GetComponent<PlayerController>().canMove = false;
+        currentBug = bug;
+        print("Current Bug is: " + currentBug.name);
+        // test
     }
 
     private void DeactivateGame()

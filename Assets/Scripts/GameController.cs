@@ -16,12 +16,14 @@ public class GameController : MonoBehaviour
 
     private int gameIndex;
     private Image nextBug;
+    
+    public List<string> collectedBugs;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Reroll();
-        nextBug = Bugs[Random.Range(0, Bugs.Count + 1)];
+        nextBug = Bugs[Random.Range(0, Bugs.Count)];
     }
 
     // Update is called once per frame
@@ -51,9 +53,10 @@ public class GameController : MonoBehaviour
         gameIndex = Random.Range(0, 3);
     }
 
-    public void BugCaught(Image bug)
+    public void BugCaught( Image bug)
     {
-        GameObject.FindWithTag(bug.tag).SetActive(true);
+        print(bug.name);
+        collectedBugs.Add(bug.name);
         Bugs.Remove(bug);
         nextBug = Bugs[Random.Range(0, Bugs.Count + 1)];
     }

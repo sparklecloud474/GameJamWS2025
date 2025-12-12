@@ -18506,6 +18506,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrarium
       objectReference: {fileID: 0}
+    - target: {fileID: 107165906317849634, guid: e6ffc0e3c0b534145be289768b2693a1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 274657996302295669, guid: e6ffc0e3c0b534145be289768b2693a1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 604208397367302533, guid: e6ffc0e3c0b534145be289768b2693a1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -18586,9 +18594,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 807474506259184899, guid: e6ffc0e3c0b534145be289768b2693a1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1098976740071682569, guid: e6ffc0e3c0b534145be289768b2693a1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1104191927572643984, guid: e6ffc0e3c0b534145be289768b2693a1, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1635556398307541175, guid: e6ffc0e3c0b534145be289768b2693a1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1850397887234324383, guid: e6ffc0e3c0b534145be289768b2693a1, type: 3}
       propertyPath: m_IsActive
@@ -18602,9 +18622,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3345677352701568253, guid: e6ffc0e3c0b534145be289768b2693a1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4710666478047461509, guid: e6ffc0e3c0b534145be289768b2693a1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773587993513654005, guid: e6ffc0e3c0b534145be289768b2693a1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5025562383720842934, guid: e6ffc0e3c0b534145be289768b2693a1, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313316518368793408, guid: e6ffc0e3c0b534145be289768b2693a1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5404992709102267363, guid: e6ffc0e3c0b534145be289768b2693a1, type: 3}
       propertyPath: m_IsActive
@@ -18621,6 +18657,10 @@ PrefabInstance:
     - target: {fileID: 7552235795030024601, guid: e6ffc0e3c0b534145be289768b2693a1, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8127254249686399815, guid: e6ffc0e3c0b534145be289768b2693a1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -24183,6 +24223,7 @@ MonoBehaviour:
   - {fileID: 271661625}
   - {fileID: 2068710866}
   nextBugTest: {fileID: 0}
+  collectedBugs: []
 --- !u!114 &956961884 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2167784814484840808, guid: e6ffc0e3c0b534145be289768b2693a1, type: 3}
