@@ -8,13 +8,15 @@ public class TerrariumScreen : MonoBehaviour
 {
 
     [SerializeField] private Button LeaveTerrariumButton;
+    [SerializeField] private List<GameObject> allBugs;
 
-    private List<string> collectedBugs;
+    private List<int> collectedBugs;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         LeaveTerrariumButton.onClick.AddListener(OnLeaveTerrariumClicked);
+
     }
 
     private void OnLeaveTerrariumClicked()
@@ -28,6 +30,7 @@ public class TerrariumScreen : MonoBehaviour
         gameObject.SetActive(true);
         GameObject.FindWithTag("Player").GetComponent<PlayerController>().canMove = false;
         UpdateBugs();
+
     }
 
     private void UpdateBugs()
@@ -37,7 +40,7 @@ public class TerrariumScreen : MonoBehaviour
         for (int i = 0; i < collectedBugs.Count; i++)
         {
             print("gesammelter Käfer:" + collectedBugs[i]);
-            GameObject.FindWithTag(collectedBugs[i]).SetActive(true);
+            allBugs[collectedBugs[i]].SetActive(true);
         }
     }
 }

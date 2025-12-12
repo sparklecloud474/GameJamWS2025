@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
     private int gameIndex;
     private Image nextBug;
     
-    public List<string> collectedBugs;
+    public List<int> collectedBugs;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -56,7 +56,7 @@ public class GameController : MonoBehaviour
     public void BugCaught( Image bug)
     {
         print(bug.name);
-        collectedBugs.Add(bug.name);
+        collectedBugs.Add(Bugs.IndexOf(bug));
         Bugs.Remove(bug);
         nextBug = Bugs[Random.Range(0, Bugs.Count + 1)];
     }
