@@ -32,20 +32,30 @@ public class GachaMiniGame : MonoBehaviour
         if (System.Array.IndexOf(buttons, button) == correctButtonIndex)
         {
             print("CORRECT BUTTON");
+            // Function das der gefangene Käfer im Terrarium angezeigt wird
+            DeactivateGame();
         }
         else if (System.Array.IndexOf(buttons, button) != correctButtonIndex)
         {
             print("WRONG BUTTON");
+            if (AttemptsLeft > 1)
+            {
+                AttemptsLeft--;
+            }
+            else if(AttemptsLeft == 1)
+            {
+                DeactivateGame();
+            }
         }
     }
 
     private void MoveBug()
     {
         bug.transform.position = buttons[correctButtonIndex].transform.position;
-        //bug.sprite = currentBugImage;
+        bug.sprite = currentBugImage;
     }
     
-    public void ActivateGame()
+    public void ActivateGame(Image bug)
     {
         bActivateGame = true;
         print("GAME ACTIVATED");
@@ -58,7 +68,7 @@ public class GachaMiniGame : MonoBehaviour
         bActivateGame = false;
         print("GAME DEACTIVATED");
         gameObject.SetActive(false);
-        GameObject.FindWithTag("Player").GetComponent<PlayerController>().canMove = true;
+        //GameObject.FindWithTag("Player").GetComponent<PlayerController>().canMove = true;
         Reroll();
     }
 

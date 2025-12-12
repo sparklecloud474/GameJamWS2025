@@ -8,13 +8,14 @@ public class PointAndClickGame : MonoBehaviour
     public RectTransform gameArea;
     public Button targetButton;
     public float timeToClick = 1.5f;
-    public BugSpriteSelector bugSpriteSelector;
+    public Button bugButton;
 
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text timerText;
 
     private float timer;
     private int score = 0;
+    private Image currentBug;
 
     // shit um Event invoke in main zu testen
     private bool bActivateGame;
@@ -89,11 +90,12 @@ public class PointAndClickGame : MonoBehaviour
 
 
     // shit um Event invoke in main zu testen
-    public void ActivateGame()
+    public void ActivateGame(Image bug)
     {
         bActivateGame = true;
         print("PUZZLE ACTIVATED");
 
+        bugButton.image.sprite = bug.sprite;
         gameObject.SetActive(true);
 
         GameObject.FindWithTag("Player").GetComponent<PlayerController>().canMove = false;
