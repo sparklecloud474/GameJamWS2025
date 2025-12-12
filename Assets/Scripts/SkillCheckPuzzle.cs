@@ -97,8 +97,5 @@ public class SkillCheckPuzzle : MonoBehaviour
         GameObject.FindWithTag("GameController").GetComponent<GameController>().Reroll();
     }
 
-    private void Timer()
-    {
-
-    }
+   
 }
